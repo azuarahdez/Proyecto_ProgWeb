@@ -5,7 +5,7 @@
 
 body{
     margin: 0;
-    background: linear-gradient(135deg,#c2f3f3,#cceeff);
+    background: linear-gradient(135deg,#dff5ea,#c8ead8);
     height: 100vh;
 }
 
@@ -18,19 +18,19 @@ body{
 
 /* Sidebar */
 .sidebar{
-    background: #ffffff;
+    background: #0b6e4f;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
     gap: 25px;
-    box-shadow: 3px 0 10px rgba(0,0,0,.1);
+    box-shadow: 3px 0 10px rgba(0,0,0,.15);
 }
 
 .icon{
     width: 45px;
     height: 45px;
-    background: #e0f7f7;
+    background: #c9f0de;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -48,13 +48,13 @@ body{
 
 .header{
     grid-column: 1 / 3;
-    display: flex remembering you asked to split HTML/CSS/JS properly;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .status{
-    background: #36d1dc;
+    background: #1dbf73;
     color: white;
     padding: 6px 14px;
     border-radius: 20px;
@@ -78,17 +78,27 @@ body{
 .register-card input{
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #b6dfc9;
+}
+
+.register-card input:focus{
+    outline: none;
+    border-color: #1dbf73;
 }
 
 .register-card button{
-    background: linear-gradient(90deg,#36d1dc,#5b86e5);
+    background: linear-gradient(90deg,#0b6e4f,#1dbf73);
     color: white;
     border: none;
     padding: 12px;
     border-radius: 12px;
     cursor: pointer;
     font-size: 16px;
+    transition: .3s;
+}
+
+.register-card button:hover{
+    opacity: .9;
 }
 
 .ticket{
@@ -98,7 +108,7 @@ body{
 
 .ticket h3{
     font-size: 40px;
-    color: #36d1dc;
+    color: #0b6e4f;
 }
 
 /* Queue */
@@ -115,7 +125,7 @@ body{
 
 .current h1{
     font-size: 50px;
-    color: #084c61;
+    color: #0b6e4f;
 }
 
 .queue-list{
@@ -129,7 +139,7 @@ body{
 
 .queue-list li{
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #dff5ea;
     display: flex;
     justify-content: space-between;
 }
