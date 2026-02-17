@@ -2,246 +2,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Moderno</title>
+    <title>Fila Virtual - Seguro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        *{
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        body{
-            margin: 0;
-            background: linear-gradient(135deg,#c2f3f3,#cceeff);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dashboard{
-            width: 95%;
-            height: 95%;
-            background: #e9fbfb;
-            border-radius: 25px;
-            display: grid;
-            grid-template-columns: 90px 1fr;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,.15);
-        }
-
-        /* Sidebar */
-        .sidebar{
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
-            gap: 25px;
-        }
-
-        .sidebar .icon{
-            width: 45px;
-            height: 45px;
-            background: #e0f7f7;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .sidebar .icon:hover{
-            background: #36d1dc;
-            color: white;
-        }
-
-        /* Main content */
-        .content{
-            padding: 30px;
-            display: grid;
-            grid-template-rows: auto 1fr;
-            gap: 25px;
-        }
-
-        .header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header h1{
-            margin: 0;
-            color: #084c61;
-        }
-
-        .search{
-            background: white;
-            border-radius: 25px;
-            padding: 8px 15px;
-            width: 260px;
-            border: none;
-            outline: none;
-            box-shadow: 0 3px 8px rgba(0,0,0,.1);
-        }
-
-        /* Cards */
-        .cards{
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-            gap: 20px;
-        }
-
-        .card{
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 5px 12px rgba(0,0,0,.1);
-        }
-
-        .card h3{
-            margin-top: 0;
-            color: #084c61;
-        }
-
-        .progress{
-            height: 6px;
-            background: #e0f2f1;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .bar{
-            height: 100%;
-            width: 70%;
-            background: linear-gradient(90deg,#36d1dc,#5b86e5);
-        }
-
-        /* Stats */
-        .stats{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .stat-box{
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 12px rgba(0,0,0,.1);
-        }
-
-        .stat-box h2{
-            margin: 0;
-            color: #36d1dc;
-            font-size: 36px;
-        }
-
-        .stat-box span{
-            color: #777;
-        }
-
-        /* Recent */
-        .recent{
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 5px 12px rgba(0,0,0,.1);
-        }
-
-        .recent h3{
-            margin-top: 0;
-        }
-
-        .item{
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-        }
-
-        .item:last-child{
-            border: none;
-        }
-
-        @media(max-width:768px){
-            .dashboard{
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar{
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="dashboard">
 
-    <div class="sidebar">
-        <div class="icon">🏠</div>
-        <div class="icon">📁</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="icon">🏥</div>
+        <div class="icon">🧾</div>
+        <div class="icon">👥</div>
         <div class="icon">📊</div>
-        <div class="icon">💬</div>
         <div class="icon">⚙</div>
-    </div>
+    </aside>
 
-    <div class="content">
+    <!-- Main -->
+    <main class="content">
 
-        <div class="header">
-            <h1>Dashboard</h1>
-            <input type="text" class="search" placeholder="Buscar...">
-        </div>
+        <header class="header">
+            <h1>Fila Virtual - Seguro</h1>
+            <span class="status">Sistema Activo</span>
+        </header>
 
-        <div class="cards">
-            <div class="card">
-                <h3>Branding Website</h3>
-                <p>Diseño UI y prototipo web</p>
-                <div class="progress"><div class="bar"></div></div>
+        <!-- Registro -->
+        <section class="register-card">
+            <h2>Registro de usuario</h2>
+
+            <form id="registerForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="text" id="idSeguro" placeholder="Número de póliza / ID" required>
+                <button type="submit">Generar pase</button>
+            </form>
+
+            <div class="ticket">
+                <p>Número de pase:</p>
+                <h3 id="ticketNumber">---</h3>
+            </div>
+        </section>
+
+        <!-- Fila virtual -->
+        <section class="queue-section">
+            <h2>Fila virtual</h2>
+
+            <div class="current">
+                <span>Turno actual:</span>
+                <h1 id="currentTurn">---</h1>
             </div>
 
-            <div class="card">
-                <h3>3D Website</h3>
-                <p>Modelado y animaciones</p>
-                <div class="progress"><div class="bar" style="width:60%"></div></div>
+            <div class="queue-list">
+                <h3>Personas en espera</h3>
+                <ul id="queue"></ul>
             </div>
+        </section>
 
-            <div class="card">
-                <h3>Naturalicious</h3>
-                <p>Diseño & desarrollo</p>
-                <div class="progress"><div class="bar" style="width:80%"></div></div>
-            </div>
-        </div>
-
-        <div class="stats">
-
-            <div class="stat-box">
-                <h2>85</h2>
-                <span>Diseño</span>
-            </div>
-
-            <div class="stat-box">
-                <h2>48</h2>
-                <span>Desarrollo</span>
-            </div>
-
-            <div class="recent">
-                <h3>Actividad Reciente</h3>
-
-                <div class="item">💬 Nuevo comentario en proyecto UI</div>
-                <div class="item">📂 Archivo subido</div>
-                <div class="item">📝 Actualización de diseño</div>
-            </div>
-
-        </div>
-
-    </div>
+    </main>
 
 </div>
 
+<script src="app.js"></script>
 </body>
 </html>
