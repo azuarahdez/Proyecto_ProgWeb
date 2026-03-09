@@ -1,71 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tu Fila Virtual IMSS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/png" href="imagenes/favicon.png">
-
-    <link rel="stylesheet" href="styles.css">
+    <title>Manos que Ayudan</title>
 </head>
 <body>
-
-<div class="dashboard">
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <img src="imagenes/IMSS_Logosímbolo.png" alt="IMSS" class="logo">
-
-        <div class="icon">🧾</div>
-        <div class="icon">👥</div>  
-        <div class="icon">📊</div>
-        <div class="icon">⚙</div>
-    </aside>
-
-    <!-- Main -->
-    <main class="content">
-
-        <header class="header center-header">
-            <h1>Tu Fila Virtual IMSS</h1>
-            <span class="status">Sistema Activo</span>
-        </header>
-
-        <!-- Registro -->
-        <section class="register-card">
-            <h2>Registro de usuario</h2>
-
-            <form id="registerForm">
-                <input type="text" id="nombre" placeholder="Nombre completo" required>
-                <input type="text" id="idSeguro" placeholder="Número de póliza / ID" required>
-                <button type="submit">Generar pase</button>
-            </form>
-
-            <div class="ticket">
-                <p>Número de pase:</p>
-                <h3 id="ticketNumber">---</h3>
-            </div>
-        </section>
-
-        <!-- Fila virtual -->
-        <section class="queue-section">
-            <h2>Fila virtual</h2>
-
-            <div class="current">
-                <span>Turno actual:</span>
-                <h1 id="currentTurn">---</h1>
-            </div>
-
-            <div class="queue-list">
-                <h3>Personas en espera</h3>
-                <ul id="queue"></ul>
-            </div>
-        </section>
-
-    </main>
-
-</div>
-
-<script src="app.js"></script>
+    
 </body>
 </html>
