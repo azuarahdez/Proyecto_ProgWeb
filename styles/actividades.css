@@ -1,0 +1,48 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+header{
+    border-bottom: 1px solid #ccc;
+}
+
+.menu{
+    max-width: 1250px;
+    margin: auto;
+    padding: 15px 20px;
+}
+
+.fila-superior{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.links{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.links a{
+    text-decoration: none;
+}
+
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img{
+    width: 35px;
+}
+
+.botones{
+    display: flex;
+    gap: 10px;
+}
