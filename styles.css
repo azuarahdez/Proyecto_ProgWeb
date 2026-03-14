@@ -1,0 +1,61 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+header{
+    border-bottom: 1px solid #ccc;
+}
+
+.menu{
+    max-width: 1250px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img{
+    width: 35px;
+}
+
+.botones{
+    display: flex;
+    gap: 10px;
+}
+
+.contenedor{
+    max-width:1250px;   
+    margin:auto;
+    padding:20px 15px;  
+}
+
+.hero .contenedor{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.hero-texto{
+    flex:1;
+}
+
+.hero-texto h1{
+    font-size:48px;
+}
+
+
+.hero-imagen{
+    flex:1.4;   
+}
+
+.hero-imagen img{
+    width:100%;
+}
