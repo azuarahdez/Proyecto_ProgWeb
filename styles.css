@@ -11,12 +11,9 @@ header{
     max-width: 1250px;
     margin: auto;
     padding: 15px 20px;
-}
-
-.fila-superior{
-    display: flex;
+    display:flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items:center;
 }
 
 .links{
@@ -30,7 +27,6 @@ header{
 .links a{
     text-decoration: none;
 }
-
 
 .logo{
     display: flex;
@@ -67,11 +63,60 @@ header{
     font-size:48px;
 }
 
-
 .hero-imagen{
     flex:1.4;   
 }
 
 .hero-imagen img{
     width:100%;
+}
+
+.layout{
+    display: flex;
+    max-width: 1250px;
+    margin: auto;
+    gap: 40px;
+    padding: 40px 20px;
+}
+
+.tabla-contenidos{
+    width: 260px;
+    background-color: #f3f4f6;
+    padding: 20px;
+    border-radius: 6px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.tabla-contenidos h3{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.tabla-contenidos ul{
+    list-style: none;
+    padding: 0;
+}
+
+.tabla-contenidos li{
+    margin-bottom: 12px;
+}
+
+.tabla-contenidos a{
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.tabla-contenidos a:hover{
+    text-decoration: underline;
+}
+
+.contenido{
+    flex: 1;
+}
+
+.contenido section{
+    margin-bottom: 40px;
 }
