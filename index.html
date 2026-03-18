@@ -11,31 +11,28 @@
 <body>
 
 <header>
-<nav class="menu">
-
-    <div class="izquierda">
-        <div class="logo">
-            <img src="icons/icono_page.png" alt="logo">
-            <h2>Manos que ayudan</h2>
+    <nav class="menu-container">
+        <div class="nav-top">
+            <div class="logo">
+                <img src="icons/icono_page.png" alt="logo">
+                <h2>Manos que ayudan</h2>
+            </div>
+            <div class="botones">
+                <a href="login.html" class="btn btn-primary">Iniciar sesión</a>
+                <a href="register.html" class="btn btn-primary">Registrarme</a>
+            </div>
         </div>
-
-        <ul class="links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="Actividades.html">Actividades</a></li>
-            <li><a href="Calendario.html">Calendario</a></li>
-            <li><a href="Voluntariado.html">Voluntariado</a></li>
-            <li><a href="Eventos.html">Eventos</a></li>
-        </ul>
-    </div>
-
-    <div class="botones">
-        <button type="button" href="login.html" class="btn btn-iniciarS">Iniciar sesión</button>
-        <button><a href="login.html">Iniciar sesión</a></button>
-        <button><a href="register.html">Registrarme</a></button>
-    </div>
-
-</nav>
-</header>
+        <div class="nav-bottom">
+            <ul class="links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Actividades.html">Actividades</a></li>
+                <li><a href="Calendario.html">Calendario</a></li>
+                <li><a href="Voluntariado.html">Voluntariado</a></li>
+                <li><a href="Eventos.html">Eventos</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>   
 
 <section class="hero">
 <div class="contenedor">
@@ -65,83 +62,71 @@
 </div>
 </section>
 
-<main class="layout">
+<main class="layout-principal">
+    <section class="seccion-intro">
+        <aside class="tabla-contenidos">
+            <h3>Tabla de contenidos</h3>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#necesidad">Necesidad de apoyo</a></li>
+                <li><a href="#objetivo">Objetivos</a></li>
+                <li><a href="#participar">Cómo participar</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+            </ul>
+        </aside>
 
-    <aside class="tabla-contenidos">
-        <h3>Tabla de contenidos</h3>
-        <ul>
-            <li><a href="#introduccion">Introducción</a></li>
-            <li><a href="#necesidad">Necesidad de apoyo comunitario</a></li>
-            <li><a href="#objetivo">Objetivos de la plataforma</a></li>
-            <li><a href="#participar">Cómo participar como voluntario</a></li>
-            <li><a href="#beneficios">Beneficios para la comunidad</a></li>
-        </ul>
-    </aside>
-
-    <div class="contenido">
-
-        <section id="introduccion">
+        <div class="texto-introduccion" id="introduccion">
             <h2>Introducción</h2>
-            <p>
-                Muchas comunidades necesitan apoyo para mejorar su entorno social
-                y ambiental. Existen organizaciones y grupos ciudadanos que realizan
-                actividades solidarias, pero muchas veces no cuentan con suficientes
-                voluntarios para llevarlas a cabo.
-            </p>
+            <p>Muchas comunidades necesitan apoyo para mejorar su entorno social y ambiental. Existen organizaciones y grupos ciudadanos que realizan actividades solidarias, pero muchas veces no cuentan con suficientes voluntarios para llevarlas a cabo.</p>
+            <p>Esta plataforma busca facilitar la conexión entre organizaciones que organizan actividades comunitarias y personas interesadas en ayudar. De esta forma se promueve la participación ciudadana y el trabajo en equipo para mejorar la calidad de vida en las comunidades.</p>
+        </div>
+    </section>
 
-            <p>
-                Esta plataforma busca facilitar la conexión entre organizaciones
-                que organizan actividades comunitarias y personas interesadas en
-                ayudar. De esta forma se promueve la participación ciudadana y el
-                trabajo en equipo para mejorar la calidad de vida en las comunidades.
-            </p>
-        </section>
-
+    <div class="contenido-full">
         <section id="necesidad">
             <h2>Necesidad de apoyo comunitario</h2>
-            <p>
-                En muchas comunidades existen problemáticas sociales, ambientales
-                y económicas que requieren la colaboración de voluntarios para ser
-                abordadas. La falta de recursos y personal en organizaciones sociales
-                limita su capacidad de acción, por lo que es fundamental contar con
-                una red de voluntariado sólida.
-            </p>
+            <p>En muchas comunidades existen problemáticas sociales, ambientales y económicas que requieren la colaboración de voluntarios para ser abordadas. La falta de recursos y personal en organizaciones sociales limita su capacidad de acción, por lo que es fundamental contar con una red de voluntariado sólida.</p>
         </section>
 
         <section id="objetivo">
-            <h2>Objetivos de la plataforma</h2>
-            <p>
-                El objetivo principal de esta plataforma es facilitar la participación
+            <h2 style="text-align: center; margin-bottom: 30px;">Objetivos de la plataforma</h2>
+            <p style="margin-bottom: 30px;">El objetivo principal de esta plataforma es facilitar la participación
                 ciudadana en actividades comunitarias. Se busca conectar a personas
                 interesadas en ayudar con organizaciones que necesitan voluntarios,
                 promoviendo así el trabajo colaborativo y el fortalecimiento de las
-                comunidades.
-            </p>
+                comunidades.</p>
+            
+            <div class="grid-objetivos">
+                <div class="card-obj color-1"><span>01</span><p>Fin de la Pobreza</p></div>
+                <div class="card-obj color-2"><span>02</span><p>Hambre Cero</p></div>
+                <div class="card-obj color-3"><span>03</span><p>Salud y Bienestar</p></div>
+                <div class="card-obj color-4"><span>04</span><p>Educación de Calidad</p></div>
+            </div>
         </section>
 
         <section id="participar">
             <h2>Cómo participar como voluntario</h2>
-            <p>
-                Para participar como voluntario, simplemente regístrate en la plataforma
+            <p>Para participar como voluntario, simplemente regístrate en la plataforma
                 y explora las actividades disponibles en tu comunidad. Puedes filtrar
                 por tipo de actividad, ubicación y fecha para encontrar la que mejor se
-                adapte a tus intereses y disponibilidad.
-            </p>
+                adapte a tus intereses y disponibilidad.</p>
         </section>
 
         <section id="beneficios">
             <h2>Beneficios para la comunidad</h2>
-            <p>
-                La participación de voluntarios en actividades comunitarias tiene múltiples
+            <p>La participación de voluntarios en actividades comunitarias tiene múltiples
                 beneficios, como el fortalecimiento del tejido social, la mejora del entorno
                 y el desarrollo de habilidades personales. Además, contribuye a crear un
-                sentido de pertenencia y solidaridad entre los miembros de la comunidad.
-            </p>
+                sentido de pertenencia y solidaridad entre los miembros de la comunidad.</p>
         </section>
-
     </div>
-
 </main>
+
+<div class="bottom-bar">
+    <div class="contenedor" style="text-align: center;">
+        Copyright © 2026 para el Equipo oficial alfa buena maravilla escuadron lobo suicida
+    </div>
+</div>
 
 </body>
 </html>
