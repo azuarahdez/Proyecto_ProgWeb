@@ -120,3 +120,12 @@ header{
 .contenido section{
     margin-bottom: 40px;
 }
+
+.btn-iniciarS{
+            background-color: var(--verde-brillante);
+            color: rgb(223, 53, 34) !important;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
