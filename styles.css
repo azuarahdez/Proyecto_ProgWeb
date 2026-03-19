@@ -21,6 +21,7 @@ body {
     background-color: var(--blanco);
 }
 
+/* HEADER */
 header {
     background: var(--blanco);
     border-bottom: 1px solid var(--gris-borde);
@@ -79,6 +80,7 @@ header {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* NAV */
 .nav-bottom {
     border-top: 1px solid #f0f0f0;
     padding-top: 12px;
@@ -103,6 +105,7 @@ header {
     color: var(--verde-principal);
 }
 
+/* HERO */
 .hero {
     background-color: #fafafa;
 }
@@ -141,6 +144,7 @@ header {
     border-radius: 8px;
 }
 
+/* MAIN */
 .layout-principal {
     max-width: 1250px;
     margin: auto;
@@ -154,6 +158,7 @@ header {
     align-items: flex-start;
 }
 
+/* TABLA */
 .tabla-contenidos {
     width: 280px;
     background-color: var(--gris-fondo);
@@ -170,14 +175,12 @@ header {
 }
 
 .tabla-contenidos ul { list-style: none; }
-
 .tabla-contenidos li { margin-bottom: 12px; }
 
 .tabla-contenidos a {
     text-decoration: none;
     color: var(--gris-texto);
     font-size: 14px;
-    transition: 0.2s;
 }
 
 .tabla-contenidos a:hover {
@@ -189,10 +192,7 @@ header {
 
 .texto-introduccion h2 { margin-bottom: 20px; }
 
-.contenido-full {
-    width: 100%;
-}
-
+/* CONTENIDO */
 .contenido-full section {
     margin-bottom: 80px;
 }
@@ -202,85 +202,71 @@ header {
 }
 
 /* ========================= */
-/* NUEVO DISEÑO OBJETIVOS */
+/* TARJETAS OBJETIVOS (FIX REAL) */
 /* ========================= */
 
 .grid-objetivos {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    gap: 35px;
+    margin-top: 50px;
     flex-wrap: wrap;
 }
 
 .card-obj {
-    width: 250px;
-    height: 320px;
-    border-radius: 20px;
-    color: white;
+    width: 240px;
+    height: 300px;
+    border-radius: 18px;
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 30px 20px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card-obj:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-/* Icono */
+/* Icono centrado */
 .icono {
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .icono img {
-    width: 45px;
-    height: 45px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
 /* Texto */
 .card-obj h3 {
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
+/* Número */
 .numero {
     position: absolute;
-    top: 15px;
-    left: 20px;
+    top: 10px;
+    left: 15px;
+    font-size: 13px;
     font-weight: bold;
-    opacity: 0.7;
 }
 
-/* Gradientes */
-.grad-1 {
-    background: linear-gradient(135deg, #36d1dc, #5b86e5);
-}
+/* Colores originales */
+.color-1 { background-color: #e5243b; }
+.color-2 { background-color: #dda63a; }
+.color-3 { background-color: #4c9f38; }
+.color-4 { background-color: #c5192d; }
 
-.grad-2 {
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-}
-
-.grad-3 {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-}
-
-.grad-4 {
-    background: linear-gradient(135deg, #fa709a, #fee140);
-}
-
-/* Footer */
+/* FOOTER */
 .bottom-bar {
     background-color: var(--gris-texto);
     color: white;
@@ -289,7 +275,7 @@ header {
     font-size: 14px;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .hero .contenedor, 
     .seccion-intro {
