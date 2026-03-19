@@ -201,51 +201,86 @@ header {
     margin-bottom: 25px;
 }
 
+/* ========================= */
+/* NUEVO DISEÑO OBJETIVOS */
+/* ========================= */
+
 .grid-objetivos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 .card-obj {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
+    width: 250px;
+    height: 320px;
+    border-radius: 20px;
     color: white;
-    font-weight: bold;
-    font-size: 13px;
-    border-radius: 6px;
-    transition: transform 0.3s;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card-obj:hover {
-    transform: scale(1.03);
-    cursor: default;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-.card-obj span {
-    font-size: 14px;
+/* Icono */
+.icono {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icono img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Texto */
+.card-obj h3 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.numero {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: bold;
     opacity: 0.7;
-    min-width: 25px;
 }
 
-.card-obj img {
-    width: 35px;
-    height: 35px;
-    object-fit: cover;
+/* Gradientes */
+.grad-1 {
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
 }
 
-.card-obj p {
-    margin: 0;
+.grad-2 {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
 }
 
-.color-1 { background-color: #e5243b; }
-.color-2 { background-color: #dda63a; }
-.color-3 { background-color: #4c9f38; }
-.color-4 { background-color: #c5192d; }
+.grad-3 {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
 
+.grad-4 {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+}
+
+/* Footer */
 .bottom-bar {
     background-color: var(--gris-texto);
     color: white;
@@ -262,7 +297,8 @@ header {
     }
 
     .grid-objetivos {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
     }
 
     .tabla-contenidos {
