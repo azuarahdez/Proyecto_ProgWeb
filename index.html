@@ -9,7 +9,9 @@
 </head>
 
 <body>
-
+<div id="splash-container">
+    <canvas id="fluid"></canvas>
+</div>
 <header>
     <nav class="menu-container">
         <div class="nav-top">
@@ -129,4 +131,56 @@
 </div>
 
 </body>
+    <script>
+const canvas = document.getElementById("fluid");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+let particles = [];
+
+document.addEventListener("mousemove", (e) => {
+    for (let i = 0; i < 10; i++) {
+        particles.push({
+            x: e.clientX,
+            y: e.clientY,
+            dx: (Math.random() - 0.5) * 4,
+            dy: (Math.random() - 0.5) * 4,
+            size: Math.random() * 4 + 1,
+            life: 60
+        });
+    }
+});
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+
+        p.x += p.dx;
+        p.y += p.dy;
+        p.life--;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 255, 0, 1)";
+        ctx.fill();
+
+        if (p.life <= 0) {
+            particles.splice(i, 1);
+            i--;
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 </html>
