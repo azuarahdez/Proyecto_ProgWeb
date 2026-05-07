@@ -1,13 +1,515 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarme</title>
-
+    <title>Registrarme — Manos que ayudan</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="icons/icono_page.png">
+    <style>
+        .register-section {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gris-fondo);
+            padding: 60px 20px;
+        }
+
+        .register-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            padding: 50px 45px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .register-card .icono-top {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .register-card .icono-top img {
+            height: 60px;
+        }
+
+        .register-card h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 6px;
+            color: var(--gris-texto);
+        }
+
+        .register-card .subtitulo {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .fila-doble {
+            display: flex;
+            gap: 16px;
+        }
+
+        .fila-doble .form-grupo {
+            flex: 1;
+        }
+
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+
+        .form-grupo label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gris-texto);
+            margin-bottom: 7px;
+        }
+
+        .form-grupo input,
+        .form-grupo select {
+            width: 100%;
+            padding: 11px 15px;
+            border: 1.5px solid var(--gris-borde);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: var(--fuente-principal);
+            color: var(--gris-texto);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+            background-color: #fafafa;
+            appearance: none;
+        }
+
+        .form-grupo input:focus,
+        .form-grupo select:focus {
+            border-color: var(--verde-principal);
+            box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.15);
+            background-color: var(--blanco);
+        }
+
+        .form-grupo input.input-error {
+            border-color: #f87171;
+        }
+
+        .hint-error {
+            font-size: 12px;
+            color: #b91c1c;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .input-password-wrapper {
+            position: relative;
+        }
+
+        .input-password-wrapper input {
+            padding-right: 45px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 16px;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: var(--verde-principal);
+        }
+
+        /* Barra de fortaleza de contraseña */
+        .fortaleza-wrapper {
+            margin-top: 8px;
+        }
+
+        .fortaleza-barra {
+            height: 5px;
+            border-radius: 4px;
+            background-color: var(--gris-borde);
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .fortaleza-relleno {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .fortaleza-texto {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .terminos {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .terminos input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: var(--verde-principal);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .terminos a {
+            color: var(--verde-oscuro);
+            text-decoration: none;
+        }
+
+        .terminos a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 13px;
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: var(--fuente-principal);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-register:hover {
+            background-color: var(--verde-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 195, 74, 0.4);
+        }
+
+        .btn-register:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 28px 0;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--gris-borde);
+        }
+
+        .pie-form {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .pie-form a {
+            color: var(--verde-oscuro);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pie-form a:hover {
+            color: var(--verde-principal);
+            text-decoration: underline;
+        }
+
+        .mensaje-error {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .mensaje-exito {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    
+
+<!-- Header -->
+<header>
+    <nav class="menu-container">
+        <div class="nav-top">
+            <div class="logo">
+                <img src="icons/icono_page.png" alt="logo">
+                <h2>Manos que ayudan</h2>
+            </div>
+            <div class="botones">
+                <a href="login.html" class="btn btn-primary">Iniciar sesión</a>
+                <a href="register.html" class="btn btn-primary">Registrarme</a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Actividades.html">Actividades</a></li>
+                <li><a href="Calendario.html">Calendario</a></li>
+                <li><a href="Voluntariado.html">Voluntariado</a></li>
+                <li><a href="Eventos.html">Eventos</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Sección de Registro -->
+<section class="register-section">
+    <div class="register-card">
+
+        <div class="icono-top">
+            <img src="icons/icono_page.png" alt="Manos que ayudan">
+        </div>
+
+        <h1>Crea tu cuenta</h1>
+        <p class="subtitulo">Únete y empieza a marcar la diferencia</p>
+
+        <div class="mensaje-error" id="msg-error"></div>
+        <div class="mensaje-exito" id="msg-exito">
+            ✅ ¡Cuenta creada correctamente! Redirigiendo al inicio de sesión...
+        </div>
+
+        <form id="form-registro" novalidate>
+
+            <!-- Nombre y apellido -->
+            <div class="fila-doble">
+                <div class="form-grupo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana" required>
+                    <span class="hint-error" id="err-nombre">Ingresa tu nombre.</span>
+                </div>
+                <div class="form-grupo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ej. García" required>
+                    <span class="hint-error" id="err-apellido">Ingresa tu apellido.</span>
+                </div>
+            </div>
+
+            <!-- Correo -->
+            <div class="form-grupo">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" autocomplete="email" required>
+                <span class="hint-error" id="err-correo">Ingresa un correo válido.</span>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="form-grupo">
+                <label for="telefono">Teléfono <span style="font-weight:400; color:#aaa;">(opcional)</span></label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 55 1234 5678">
+            </div>
+
+            <!-- Área de interés -->
+            <div class="form-grupo">
+                <label for="area">Área de voluntariado de interés</label>
+                <select id="area" name="area" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="medio-ambiente">Medio ambiente y reforestación</option>
+                    <option value="alimentacion">Alimentación comunitaria</option>
+                    <option value="educacion">Educación y tutorías</option>
+                    <option value="salud">Salud y bienestar</option>
+                    <option value="infraestructura">Limpieza e infraestructura</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <span class="hint-error" id="err-area">Selecciona un área de interés.</span>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="form-grupo">
+                <label for="contrasena">Contraseña</label>
+                <div class="input-password-wrapper">
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+                    <button type="button" class="toggle-password" id="toggle-pass1" aria-label="Mostrar contraseña">👁️</button>
+                </div>
+                <div class="fortaleza-wrapper">
+                    <div class="fortaleza-barra">
+                        <div class="fortaleza-relleno" id="fortaleza-relleno"></div>
+                    </div>
+                    <span class="fortaleza-texto" id="fortaleza-texto"></span>
+                </div>
+                <span class="hint-error" id="err-contrasena">La contraseña debe tener al menos 8 caracteres.</span>
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="form-grupo">
+                <label for="confirmar">Confirmar contraseña</label>
+                <div class="input-password-wrapper">
+                    <input type="password" id="confirmar" name="confirmar" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+                    <button type="button" class="toggle-password" id="toggle-pass2" aria-label="Mostrar contraseña">👁️</button>
+                </div>
+                <span class="hint-error" id="err-confirmar">Las contraseñas no coinciden.</span>
+            </div>
+
+            <!-- Términos -->
+            <div class="terminos">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">
+                    Acepto los <a href="#">términos y condiciones</a> y la <a href="#">política de privacidad</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-register">Crear cuenta</button>
+
+        </form>
+
+        <div class="divider">o</div>
+
+        <p class="pie-form">
+            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+        </p>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="bottom-bar">
+    <div class="contenedor" style="text-align: center;">
+        Copyright © 2026 para el Equipo oficial alfa buena maravilla escuadron lobo suicida
+    </div>
+</div>
+
+<script>
+    /* ── Mostrar / ocultar contraseñas ── */
+    function toggleVisibilidad(btnId, inputId) {
+        const btn = document.getElementById(btnId);
+        const input = document.getElementById(inputId);
+        btn.addEventListener("click", () => {
+            const visible = input.type === "text";
+            input.type = visible ? "password" : "text";
+            btn.textContent = visible ? "👁️" : "🙈";
+        });
+    }
+    toggleVisibilidad("toggle-pass1", "contrasena");
+    toggleVisibilidad("toggle-pass2", "confirmar");
+
+    /* ── Barra de fortaleza de contraseña ── */
+    const inputPass = document.getElementById("contrasena");
+    const relleno = document.getElementById("fortaleza-relleno");
+    const textoFortaleza = document.getElementById("fortaleza-texto");
+
+    inputPass.addEventListener("input", () => {
+        const val = inputPass.value;
+        let puntos = 0;
+        if (val.length >= 8) puntos++;
+        if (/[A-Z]/.test(val)) puntos++;
+        if (/[0-9]/.test(val)) puntos++;
+        if (/[^A-Za-z0-9]/.test(val)) puntos++;
+
+        const niveles = [
+            { ancho: "0%",   color: "",          texto: "" },
+            { ancho: "25%",  color: "#f87171",   texto: "Débil" },
+            { ancho: "50%",  color: "#fbbf24",   texto: "Regular" },
+            { ancho: "75%",  color: "#60a5fa",   texto: "Buena" },
+            { ancho: "100%", color: "#4ade80",   texto: "Fuerte" },
+        ];
+
+        const nivel = val.length === 0 ? niveles[0] : niveles[puntos];
+        relleno.style.width = nivel.ancho;
+        relleno.style.backgroundColor = nivel.color;
+        textoFortaleza.textContent = nivel.texto;
+        textoFortaleza.style.color = nivel.color;
+    });
+
+    /* ── Validación y envío ── */
+    const form = document.getElementById("form-registro");
+    const msgError = document.getElementById("msg-error");
+    const msgExito = document.getElementById("msg-exito");
+
+    function mostrarError(id, mostrar) {
+        document.getElementById(id).style.display = mostrar ? "block" : "none";
+    }
+
+    function marcarInput(id, error) {
+        const el = document.getElementById(id);
+        if (error) el.classList.add("input-error");
+        else el.classList.remove("input-error");
+    }
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        msgError.style.display = "none";
+        msgExito.style.display = "none";
+
+        const nombre    = document.getElementById("nombre").value.trim();
+        const apellido  = document.getElementById("apellido").value.trim();
+        const correo    = document.getElementById("correo").value.trim();
+        const area      = document.getElementById("area").value;
+        const pass      = document.getElementById("contrasena").value;
+        const confirmar = document.getElementById("confirmar").value;
+        const terminos  = document.getElementById("terminos").checked;
+
+        let valido = true;
+
+        const errNombre   = !nombre;
+        const errApellido = !apellido;
+        const errCorreo   = !correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+        const errArea     = !area;
+        const errPass     = pass.length < 8;
+        const errConfirm  = pass !== confirmar;
+
+        mostrarError("err-nombre",    errNombre);   marcarInput("nombre",    errNombre);
+        mostrarError("err-apellido",  errApellido); marcarInput("apellido",  errApellido);
+        mostrarError("err-correo",    errCorreo);   marcarInput("correo",    errCorreo);
+        mostrarError("err-area",      errArea);     marcarInput("area",      errArea);
+        mostrarError("err-contrasena",errPass);     marcarInput("contrasena",errPass);
+        mostrarError("err-confirmar", errConfirm);  marcarInput("confirmar", errConfirm);
+
+        if (errNombre || errApellido || errCorreo || errArea || errPass || errConfirm) {
+            valido = false;
+        }
+
+        if (!terminos) {
+            msgError.textContent = "⚠️ Debes aceptar los términos y condiciones.";
+            msgError.style.display = "block";
+            valido = false;
+        }
+
+        if (!valido) return;
+
+        // Aquí iría la llamada real al backend.
+        msgExito.style.display = "block";
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
+    });
+</script>
+
 </body>
 </html>
