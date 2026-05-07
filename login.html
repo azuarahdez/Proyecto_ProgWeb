@@ -1,13 +1,404 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicia Sesión</title>
-
+    <title>Iniciar Sesión — Manos que ayudan</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="icons/icono_page.png">
+    <style>
+        .login-section {
+            min-height: calc(100vh - 180px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gris-fondo);
+            padding: 60px 20px;
+        }
+
+        .login-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            padding: 50px 45px;
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .login-card .icono-top {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .login-card .icono-top img {
+            height: 60px;
+        }
+
+        .login-card h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 6px;
+            color: var(--gris-texto);
+        }
+
+        .login-card .subtitulo {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+
+        .form-grupo label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gris-texto);
+            margin-bottom: 7px;
+        }
+
+        .form-grupo input {
+            width: 100%;
+            padding: 11px 15px;
+            border: 1.5px solid var(--gris-borde);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: var(--fuente-principal);
+            color: var(--gris-texto);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+            background-color: #fafafa;
+        }
+
+        .form-grupo input:focus {
+            border-color: var(--verde-principal);
+            box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.15);
+            background-color: var(--blanco);
+        }
+
+        .fila-contrasena {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
+        }
+
+        .fila-contrasena label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gris-texto);
+        }
+
+        .link-olvide {
+            font-size: 12px;
+            color: var(--verde-oscuro);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .link-olvide:hover {
+            color: var(--verde-principal);
+            text-decoration: underline;
+        }
+
+        .input-password-wrapper {
+            position: relative;
+        }
+
+        .input-password-wrapper input {
+            padding-right: 45px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 16px;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: var(--verde-principal);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 13px;
+            background-color: var(--verde-principal);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: var(--fuente-principal);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: var(--verde-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 195, 74, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 28px 0;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--gris-borde);
+        }
+
+        .pie-form {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .pie-form a {
+            color: var(--verde-oscuro);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pie-form a:hover {
+            color: var(--verde-principal);
+            text-decoration: underline;
+        }
+
+        .mensaje-error {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .mensaje-exito {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    
+
+<!-- Animación de partículas -->
+<div id="splash-container">
+    <canvas id="fluid"></canvas>
+</div>
+
+<!-- Header -->
+<header>
+    <nav class="menu-container">
+        <div class="nav-top">
+            <div class="logo">
+                <img src="icons/icono_page.png" alt="logo">
+                <h2>Manos que ayudan</h2>
+            </div>
+            <div class="botones">
+                <a href="login.html" class="btn btn-primary">Iniciar sesión</a>
+                <a href="register.html" class="btn btn-primary">Registrarme</a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Actividades.html">Actividades</a></li>
+                <li><a href="Calendario.html">Calendario</a></li>
+                <li><a href="Voluntariado.html">Voluntariado</a></li>
+                <li><a href="Eventos.html">Eventos</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Sección de Login -->
+<section class="login-section">
+    <div class="login-card">
+
+        <div class="icono-top">
+            <img src="icons/icono_page.png" alt="Manos que ayudan">
+        </div>
+
+        <h1>Bienvenido de vuelta</h1>
+        <p class="subtitulo">Inicia sesión para continuar ayudando</p>
+
+        <div class="mensaje-error" id="msg-error">
+            ⚠️ Correo o contraseña incorrectos. Intenta de nuevo.
+        </div>
+
+        <div class="mensaje-exito" id="msg-exito">
+            ✅ ¡Sesión iniciada correctamente! Redirigiendo...
+        </div>
+
+        <form id="form-login" novalidate>
+
+            <div class="form-grupo">
+                <label for="correo">Correo electrónico</label>
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="ejemplo@correo.com"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-grupo">
+                <div class="fila-contrasena">
+                    <label for="contrasena">Contraseña</label>
+                    <a href="#" class="link-olvide">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="input-password-wrapper">
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        placeholder="Tu contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <button type="button" class="toggle-password" id="toggle-pass" aria-label="Mostrar contraseña">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">Iniciar sesión</button>
+
+        </form>
+
+        <div class="divider">o</div>
+
+        <p class="pie-form">
+            ¿Aún no tienes cuenta? <a href="register.html">Regístrate gratis</a>
+        </p>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="bottom-bar">
+    <div class="contenedor" style="text-align: center;">
+        Copyright © 2026 para el Equipo oficial alfa buena maravilla escuadron lobo suicida
+    </div>
+</div>
+
+<script>
+    /* ── Animación de partículas ── */
+    const canvas = document.getElementById("fluid");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    let particles = [];
+
+    document.addEventListener("mousemove", (e) => {
+        for (let i = 0; i < 10; i++) {
+            particles.push({
+                x: e.clientX, y: e.clientY,
+                dx: (Math.random() - 0.5) * 4,
+                dy: (Math.random() - 0.5) * 4,
+                size: Math.random() * 4 + 1,
+                life: 60
+            });
+        }
+    });
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+            let p = particles[i];
+            p.x += p.dx; p.y += p.dy; p.life--;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(0, 255, 0, 1)";
+            ctx.fill();
+            if (p.life <= 0) { particles.splice(i, 1); i--; }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    /* ── Mostrar / ocultar contraseña ── */
+    const toggleBtn = document.getElementById("toggle-pass");
+    const inputPass = document.getElementById("contrasena");
+
+    toggleBtn.addEventListener("click", () => {
+        const visible = inputPass.type === "text";
+        inputPass.type = visible ? "password" : "text";
+        toggleBtn.textContent = visible ? "👁️" : "🙈";
+    });
+
+    /* ── Validación y envío del formulario ── */
+    const form = document.getElementById("form-login");
+    const msgError = document.getElementById("msg-error");
+    const msgExito = document.getElementById("msg-exito");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const correo = document.getElementById("correo").value.trim();
+        const contrasena = document.getElementById("contrasena").value;
+
+        msgError.style.display = "none";
+        msgExito.style.display = "none";
+
+        if (!correo || !contrasena) {
+            msgError.textContent = "⚠️ Por favor completa todos los campos.";
+            msgError.style.display = "block";
+            return;
+        }
+
+        // Aquí iría la llamada real al backend.
+        // Por ahora simulamos un inicio de sesión exitoso.
+        msgExito.style.display = "block";
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1800);
+    });
+</script>
+
 </body>
 </html>
